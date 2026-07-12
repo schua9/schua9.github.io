@@ -1,0 +1,75 @@
+.chart-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  min-width: 0;
+}
+
+.chart-wide {
+  margin-bottom: 1.25rem;
+}
+
+.chart-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.25rem;
+}
+
+.chart-canvas-wrap {
+  position: relative;
+  height: 260px;
+}
+
+.chart-wide .chart-canvas-wrap {
+  height: 320px;
+}
+
+.charts-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (min-width: 681px) {
+  .charts-row .chart-canvas-wrap {
+    contain: layout paint;
+  }
+
+  .charts-row .chart-canvas-wrap canvas {
+    opacity: 0;
+    animation: chart-row-canvas-reveal 180ms ease-out 80ms forwards;
+  }
+
+  @keyframes chart-row-canvas-reveal {
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+@media (max-width: 680px) {
+  .charts-row {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-card {
+    padding: 1.25rem 1rem;
+  }
+
+  .chart-wide .chart-canvas-wrap {
+    height: 260px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .charts-row .chart-canvas-wrap canvas {
+    opacity: 1;
+    animation: none;
+  }
+}

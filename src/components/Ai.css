@@ -1,0 +1,134 @@
+.ai-summary-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.ai-summary-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.ai-summary-tool {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.85rem;
+  color: var(--accent);
+}
+
+.ai-summary-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.ai-summary-stats strong {
+  color: var(--text-h);
+}
+
+.workspace-list,
+.tool-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.meeting-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.meeting-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.meeting-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.meeting-cadence {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.meeting-bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.meeting-bar {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--accent);
+  flex-shrink: 0;
+  transition: width 0.3s ease;
+}
+
+.meeting-count {
+  font-size: 0.75rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.plugin-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.plugin-row:last-child {
+  border-bottom: none;
+}
+
+.plugin-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-h);
+  min-width: 100px;
+}
+
+.plugin-purpose {
+  font-size: 0.8rem;
+  color: var(--muted);
+  flex: 1;
+}
+
+.plugin-date {
+  font-size: 0.75rem;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+@media (max-width: 680px) {
+  .plugin-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.2rem 1rem;
+  }
+
+  .plugin-name {
+    min-width: 0;
+  }
+
+  .plugin-purpose {
+    grid-column: 1 / -1;
+  }
+
+  .meeting-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.1rem;
+  }
+}

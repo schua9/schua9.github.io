@@ -1,0 +1,55 @@
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+  gap: 1.25rem;
+}
+
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: border-color 0.15s;
+}
+
+.project-card:hover {
+  border-color: var(--accent);
+}
+
+.project-icon {
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.project-name {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.project-repo {
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-family: var(--mono);
+  margin-bottom: 0.75rem;
+}
+
+.project-desc {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.project-meta {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 1rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.project-meta strong {
+  color: var(--text-h);
+}

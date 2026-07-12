@@ -1,0 +1,122 @@
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--border);
+}
+
+.tl-card {
+  position: relative;
+  padding: 0 0 2rem 1.75rem;
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
+}
+
+.tl-card.tl-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tl-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.tl-card::before {
+  content: '';
+  position: absolute;
+  left: -1.75rem;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.tl-date {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.35rem;
+}
+
+.tl-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.tl-body {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.tl-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.tag-development {
+  background: color-mix(in srgb, var(--accent2) 20%, transparent);
+  color: var(--accent2);
+}
+.tag-product {
+  background: color-mix(in srgb, var(--accent3) 20%, transparent);
+  color: var(--accent3);
+}
+.tag-design {
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+  color: var(--accent);
+}
+.tag-ai {
+  background: color-mix(in srgb, var(--blue) 20%, transparent);
+  color: var(--blue);
+}
+
+@media (max-width: 680px) {
+  .timeline {
+    padding-left: 1.5rem;
+  }
+
+  .tl-card {
+    padding-left: 1.25rem;
+  }
+
+  .tl-card::before {
+    left: -1.25rem;
+  }
+}

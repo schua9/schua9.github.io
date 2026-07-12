@@ -1,0 +1,34 @@
+.section {
+  padding: 5rem 2rem;
+}
+
+.section-alt {
+  background: var(--bg-alt);
+}
+
+.section-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+}
+
+.section-sub {
+  color: var(--muted);
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 680px) {
+  .section {
+    padding: 3.5rem 1.25rem;
+  }
+
+  .section-sub {
+    margin-bottom: 2rem;
+  }
+}
