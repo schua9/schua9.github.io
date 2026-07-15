@@ -33,7 +33,15 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Deploy to gh-pages branch
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          branch: gh-pages
+          single-commit: true
+
       - name: Configure GitHub Pages to use gh-pages branch
+        continue-on-error: true
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -47,10 +55,3 @@ jobs:
             }
           }
           EOF
-
-      - name: Deploy to gh-pages branch
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: dist
-          branch: gh-pages
-          single-commit: true
