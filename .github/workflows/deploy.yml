@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -33,25 +33,18 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy to gh-pages branch
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          folder: dist
-          branch: gh-pages
-          single-commit: true
+          path: dist
 
-      - name: Configure GitHub Pages to use gh-pages branch
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh api --method PATCH "/repos/${{ github.repository }}/pages" \
-            --input - <<'EOF'
-          {
-            "build_type": "legacy",
-            "source": {
-              "branch": "gh-pages",
-              "path": "/"
-            }
-          }
-          EOF
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
